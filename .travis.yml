@@ -1,7 +1,6 @@
 language: java
-jdk:
-- oraclejdk7
-
+java:
+  -1.8.0_151
 sudo: required
 
 before_install:
