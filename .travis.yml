@@ -3,7 +3,3 @@ java:
   - 1.8
 before_install:
   - chmod +x gradlew
-notifications:
-  email:
-  - 1619159@students.wits.ac.za
-  - 1657041@students.wits.ac.za
