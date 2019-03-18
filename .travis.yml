@@ -1,6 +1,6 @@
 language: java
 java:
-  -1.8.0_151
+  -"stable"
 sudo: required
 
 before_install:
