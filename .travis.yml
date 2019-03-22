@@ -1,4 +1,4 @@
-sudo 
+sudo : true
 language: android
 jdk: oraclejdk8
 
