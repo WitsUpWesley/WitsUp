@@ -16,9 +16,10 @@ android:
   - $ANDROID_TARGET
   - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
 licenses:
-- 'android-sdk-preview-license-52d11cd2'
-- 'android-sdk-license-.+'
-- 'google-gdk-license-.+'
+    - 'android-sdk-license-.+'
+
+before_install:
+  - yes | sdkmanager "platforms;android-27"
 script:
 - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
 - emulator -avd test -no-skin -no-audio -no-window &
