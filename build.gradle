@@ -11,6 +11,7 @@ buildscript {
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
     }
 }
 
@@ -21,6 +22,18 @@ allprojects {
         
     }
 }
+
+apply plugin: 'com.github.kt3k.coveralls'
+
+coveralls {
+    jacocoReportPath = "${buildDir}/reports/coverage/debug/report.xml"
+}
+
+tasks.coveralls {
+    dependsOn 'connectedAndroidTest'
+    onlyIf { System.env.'CI' }
+}
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
