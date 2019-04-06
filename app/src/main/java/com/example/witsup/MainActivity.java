@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.sql.SQLOutput;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         params.put( "Username", username);
         params.put( "Password", password);
 
+
+     //   AsyncHttpPost asyncHttpPost = new AsyncHttpPost(" http%3A%2F%2Flamp.ms.wits.ac.za%2F%7Es1355485%2FloginTest.php", params) {
+
 AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/loginTest.php", params) {
    //   AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://s1355485@lamp.ms.wits.ac.za/loginTest.php", params) {
 
@@ -71,7 +76,8 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
                         LABEL.setText("R" + output);
                     }
                     */
-                    LABEL.setText("Logged in"+output);
+                    System.out.println("Logged in"+output);
+                    LABEL.setText("Logged in");
 
                     //temp star
                    // Intent intent = new Intent(MainActivity.this, homepageOnClicks.class);

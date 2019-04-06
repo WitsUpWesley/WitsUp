@@ -2,15 +2,22 @@ package com.example.witsup;
 
 import android.content.ContentValues;
 import android.net.Uri;
-import android.os.AsyncTask;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
+import java.net.*;
+import java.io.*;
+import android.os.*;
+
+//import android.os.AsyncTask;
+//import java.io.BufferedReader;
+//import java.io.BufferedWriter;
+//import java.io.InputStreamReader;
+//import java.io.OutputStream;
+//import java.io.OutputStreamWriter;
+
+//import java.net.HttpURLConnection;
+//import java.net.URL;
+
 import java.sql.SQLOutput;
 
 /**
@@ -50,21 +57,26 @@ public abstract class AsyncHttpPost extends AsyncTask<String, String, String> {
                 OutputStream os;
 
                 os= connection.getOutputStream();
+                System.out.println("output stream "+os);
 
 
 
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-
+                System.out.println("writing query"+query);
                 writer.write(query);
                 writer.flush();
                 writer.close();
                 os.close();
+                System.out.println("closed os");
             }
+            //BufferedReader br = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            System.out.println("trying input stream");
             BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
+            System.out.println("br"+br.toString());
             String response = br.readLine();
 
             br.close();
+            System.out.println("response"+response);
             return response;
         } catch (Exception e) {
             e.printStackTrace();
