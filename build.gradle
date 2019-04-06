@@ -23,13 +23,6 @@ allprojects {
     }
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled = true // coveralls plugin depends on xml format report
-        html.enabled = true
-    }
-}
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
