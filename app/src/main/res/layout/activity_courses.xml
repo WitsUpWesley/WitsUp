@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:isScrollContainer="true"
+
+    android:orientation="vertical"
+    tools:context="com.example.witsup.Courses">
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="createCourse"
+        android:text="Create Course"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="Log Out" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:isScrollContainer="true"
+        android:orientation="vertical"
+        tools:context="com.example.witsup.Courses">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="411dp"
+            android:orientation="vertical"
+            android:scrollbars="vertical"></LinearLayout>
+    </ScrollView>
+</LinearLayout>

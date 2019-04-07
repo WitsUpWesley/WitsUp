@@ -59,10 +59,10 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
 
                 }else {//logged in
 //
-                 //   start = output.indexOf(":")+2;
-                 //   end= output.indexOf(34,start);
+                    start = output.indexOf(":")+2;
+                    end= output.indexOf(34,start);
 //
-                 //   checker= output.substring(start,end);
+                    checker= output.substring(start,end);
 
                     /*
                     System.out.println("username:"+checker);
@@ -77,12 +77,12 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
                     }
                     */
                     System.out.println("Logged in"+output);
-                    LABEL.setText("Logged in");
+                    LABEL.setText("Logged in"+checker);
 
-                    //temp star
-                   // Intent intent = new Intent(MainActivity.this, homepageOnClicks.class);
-                  //  intent.putExtra("username", checker);
-                 //   startActivity(intent); ***
+
+                    Intent intent = new Intent(MainActivity.this, Courses.class);
+                   intent.putExtra("PersonNumber", checker);
+                   startActivity(intent);
 
 
 
