@@ -8,19 +8,7 @@
     android:layout_height="match_parent"
     android:isScrollContainer="true"
     android:orientation="vertical"
-    tools:context="com.example.witsup.Courses">
-
-    <Button
-        android:id="@+id/btnCreateCourse"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:clickable="false"
-        android:onClick="goToCreateCourse"
-        android:text="Create Course"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+    tools:context="com.example.witsup.HomePage">
 
     <Button
         android:id="@+id/btnLogout"
@@ -29,13 +17,14 @@
         android:onClick="logout"
         android:text="Log Out" />
 
+
     <ScrollView
         android:id="@+id/scrollV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="198dp"
         android:isScrollContainer="true"
         android:orientation="vertical"
-        tools:context="com.example.witsup.Courses">
+        tools:context="com.example.witsup.HomePage">
 
         <LinearLayout
             android:id="@+id/container"
@@ -44,4 +33,15 @@
             android:orientation="vertical"
             android:scrollbars="vertical"></LinearLayout>
     </ScrollView>
+    <Button
+        android:id="@+id/btnCreateCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:onClick="goToCreateCourse"
+        android:text="Create Course1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </LinearLayout>

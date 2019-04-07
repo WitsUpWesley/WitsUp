@@ -8,14 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.sql.SQLOutput;
-
-public class MainActivity extends AppCompatActivity {
+public class LogInPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.loginpage);
         setTitle("Login");
         TextView textView =  textView=(TextView) findViewById(R.id.btnCreateNewuser1);
         textView.setVisibility(View.INVISIBLE);
@@ -80,12 +78,10 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
                     LABEL.setText("Logged in"+checker);
 
 
-                    Intent intent = new Intent(MainActivity.this, Courses.class);
+                    Intent intent = new Intent(LogInPage.this, HomePage.class);
                    intent.putExtra("PersonNumber", checker);
+
                    startActivity(intent);
-
-
-
                 }
             }
         };

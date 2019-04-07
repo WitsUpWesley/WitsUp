@@ -5,14 +5,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import org.json.JSONArray;
@@ -21,20 +16,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Courses extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
     String personNumber;
-    String creatCourseAllowed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         personNumber = getIntent().getExtras().getString("PersonNumber");
-        setContentView(R.layout.activity_courses);
+        setContentView(R.layout.homepage);
 
         setTitle("Home");
         ContentValues params = new ContentValues();
+        params.clear();
         params.put("Username", personNumber);
-        System.out.println((personNumber.charAt(0)));
+        System.out.println((personNumber));
         if (personNumber.charAt(0) == 'a') {
             //show create course button
             System.out.println("Shoudl show all stuff");
@@ -44,9 +39,9 @@ public class Courses extends AppCompatActivity {
             btnTemp.setVisibility(View.VISIBLE);
             btnTemp.setClickable(true);
 
-            LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.btnCreateCourse).getLayoutParams();
-            paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
-            findViewById(R.id.scrollV).setLayoutParams(paramss);
+         //   LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.btnCreateCourse).getLayoutParams();
+        //    paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
+        //    findViewById(R.id.scrollV).setLayoutParams(paramss);
 
 
 
@@ -80,12 +75,6 @@ public class Courses extends AppCompatActivity {
             paramss.height=LinearLayout.LayoutParams.MATCH_PARENT;
             findViewById(R.id.scrollV).setLayoutParams(paramss);
             */
-
-
-
-
-
-
         }
 
         AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getAll.php", params) {
@@ -103,8 +92,10 @@ public class Courses extends AppCompatActivity {
         try {
             JSONArray ja = new JSONArray(output);
             for (int i = 0; i < ja.length(); i++) {
+
+                System.out.println("DOES THIS RUNNNN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n");
                 final JSONObject jo = (JSONObject) ja.get(i);
-                LinearLayout item = (LinearLayout) getLayoutInflater().inflate(R.layout.course_item, null);
+                LinearLayout item = (LinearLayout) getLayoutInflater().inflate(R.layout.item_course, null);
 
             /*
                 TextView course_id = (TextView) item.findViewById(R.id.course_id);
@@ -132,7 +123,7 @@ public class Courses extends AppCompatActivity {
                item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Courses.this, coursePage.class);
+                        Intent intent = new Intent(HomePage.this, CourseDetails.class);
                         try {
                             String temp =jo.getString("course");
                             System.out.println("Sending course here "+temp);
@@ -184,17 +175,14 @@ public class Courses extends AppCompatActivity {
 
 
     public void logout(View v) {
-        Intent intent = new Intent(Courses.this, MainActivity.class);
+        Intent intent = new Intent(HomePage.this, LogInPage.class);
         startActivity(intent);
     }
 
-
-
     public void goToCreateCourse(View v) {
-        Intent intent = new Intent(Courses.this, CreateCourse.class);
+        Intent intent = new Intent(HomePage.this, CreateCourse.class);
         intent.putExtra("PersonNumber", personNumber);
         startActivity(intent);
-
     }
 
 

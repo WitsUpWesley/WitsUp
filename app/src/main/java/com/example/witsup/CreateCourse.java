@@ -7,19 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class CreateCourse extends AppCompatActivity {
 
     String personNumber;
-    String creatCourseAllowed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         personNumber = getIntent().getExtras().getString("PersonNumber");
-        setContentView(R.layout.activity_courses);
+        setContentView(R.layout.create_course);
 
         setTitle("Home");
         ContentValues params = new ContentValues();
@@ -34,9 +34,6 @@ public class CreateCourse extends AppCompatActivity {
             btnTemp.setVisibility(View.VISIBLE);
             btnTemp.setClickable(true);
 
-            LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.btnCreateCourse).getLayoutParams();
-            paramss.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-            findViewById(R.id.scrollV).setLayoutParams(paramss);
         }
     }
     public void addCourse(String temp) {
@@ -84,11 +81,9 @@ public class CreateCourse extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Course code already exists, choose another course code", Toast.LENGTH_SHORT).show();
             ((TextView) findViewById(R.id.ETCourseCode)).setText("");
         }
-
-
     }
     public void createCourse(View v) {
-        // Intent intent = new Intent(Courses.this, MainActivity.class);
+        // Intent intent = new Intent(HomePage.this, LogInPage.class);
         //     startActivity(intent);
         if (((TextView) findViewById(R.id.ETCourseCode)).getText().toString() != "") {
 
@@ -117,7 +112,7 @@ public class CreateCourse extends AppCompatActivity {
 
     }
     public void logout(View v) {
-        Intent intent = new Intent(CreateCourse.this, MainActivity.class);
+        Intent intent = new Intent(CreateCourse.this, LogInPage.class);
         startActivity(intent);
     }
 

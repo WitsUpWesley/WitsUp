@@ -34,7 +34,7 @@ public abstract class AsyncHttpPost extends AsyncTask<String, String, String> {
     @Override
     protected String doInBackground(String... params) {
         try {
-            System.out.println("-------------------------------------"+parameters);
+            System.out.println("Async http-------------------------------------"+parameters);
             URL url = new URL(address);
             HttpURLConnection connection =(HttpURLConnection) url.openConnection();
 

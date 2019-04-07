@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class coursePage extends AppCompatActivity   {
+public class CourseDetails extends AppCompatActivity   {
 
     String personNumber;
 
@@ -29,7 +29,7 @@ public class coursePage extends AppCompatActivity   {
         personNumber = getIntent().getExtras().getString("PersonNumber");
         setContentView(R.layout.course_page);
 
-        setTitle("coursePage");
+        setTitle("CourseDetails");
 
     }
 }
