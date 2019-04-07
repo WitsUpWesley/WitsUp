@@ -52,7 +52,10 @@ public class CreateCourse extends AppCompatActivity {
             t2 = ((TextView) findViewById(R.id.ETCourseDescription)).getText().toString();
             t3 = ((TextView) findViewById(R.id.ETCoursePassword)).getText().toString();
             System.out.println("Terying to make new course here" + t1 + " " + t2 + " " + t3);
-            if (t1 != null && t1 != "" && t1.contains(" ") == false && t2 != null && t2 != "" && t3 != null && t3 != "") {
+            if (t1.isEmpty()|| t1.contains(" ") || t2.isEmpty()|| t2.contains(" ")||t3.isEmpty()|| t3.contains(" ")) {
+                Toast.makeText(getApplicationContext(), "Cannot be blank and course code cannot contain spaces", Toast.LENGTH_SHORT).show();
+            }
+            else {
                 params.put("CourseCode", t1);
                 params.put("CourseDisc", t2);
                 params.put("CoursePass", t3);
@@ -71,9 +74,6 @@ public class CreateCourse extends AppCompatActivity {
                     }
                 };
                 asyncHttpPost2.execute();
-            } else {
-                Toast.makeText(getApplicationContext(), "Cannot be blank and course code cannot contain spaces", Toast.LENGTH_SHORT).show();
-
 
             }
 
