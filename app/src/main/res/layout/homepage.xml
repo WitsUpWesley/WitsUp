@@ -34,12 +34,23 @@
             android:scrollbars="vertical"></LinearLayout>
     </ScrollView>
     <Button
+        android:id="@+id/btnEnrolInsCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:onClick="goToEnrolInCourse"
+        android:text="Enrol In Course"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
         android:id="@+id/btnCreateCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="false"
         android:onClick="goToCreateCourse"
-        android:text="Create Course1"
+        android:text="Create Course"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

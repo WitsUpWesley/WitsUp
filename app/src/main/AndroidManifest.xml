@@ -22,8 +22,10 @@
 
         <activity android:name=".HomePage"/>
         <activity android:name=".CreateCourse"/>
-        <activity android:name=".CourseDetails"></activity>
+        <activity android:name=".CourseDetails"/>
 
+        <activity android:name=".Enrolincourse">
+        </activity>
 
     </application>
 

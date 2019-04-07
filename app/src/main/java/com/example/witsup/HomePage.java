@@ -181,7 +181,11 @@ public class HomePage extends AppCompatActivity {
         intent.putExtra("PersonNumber", personNumber);
         startActivity(intent);
     }
-
+    public void goToEnrolInCourse(View v) {
+        Intent intent = new Intent(HomePage.this, Enrolincourse.class);
+        intent.putExtra("PersonNumber", personNumber);
+        startActivity(intent);
+    }
 
 }
 
