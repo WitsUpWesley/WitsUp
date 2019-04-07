@@ -23,6 +23,8 @@
         <activity android:name=".Courses">
         </activity> <activity android:name=".CreateCourse">
     </activity>
+  <activity android:name=".coursePage">
+</activity>
 
 
 

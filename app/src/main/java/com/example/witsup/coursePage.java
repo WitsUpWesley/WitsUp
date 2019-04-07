@@ -19,7 +19,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class coursePage extends AppCompatActivity   {  String personNumber;
+public class coursePage extends AppCompatActivity   {
+
+    String personNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
