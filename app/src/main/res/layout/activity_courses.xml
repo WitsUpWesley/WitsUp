@@ -10,8 +10,16 @@
     android:orientation="vertical"
     tools:context="com.example.witsup.Courses">
 
+       <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="Log Out" />
     <Button
-        android:id="@+id/btnPost"
+        android:id="@+id/btnCreateCourse"
+        android:visibility="invisible"
+        android:clickable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="createCourse"
@@ -21,12 +29,55 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <Button
-        android:id="@+id/btnLogout"
+
+    <TextView
+        android:id="@+id/lblCourseCode"
+        android:visibility="invisible"
+        android:clickable="false"
+        android:text="Course Code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="logout"
-        android:text="Log Out" />
+        />
+    <EditText
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ETCourseCode"
+        android:visibility="invisible"
+        android:clickable="false"
+        />
+    <TextView
+        android:id="@+id/lblCoursePassword"
+        android:visibility="invisible"
+        android:clickable="false"
+        android:text="Course Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ETCoursePassword"
+        android:visibility="invisible"
+        android:clickable="false"
+        />
+    <TextView
+        android:id="@+id/lblCourseDescription"
+        android:visibility="invisible"
+        android:clickable="false"
+        android:text="Course Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ETCourseDescription"
+        android:visibility="invisible"
+        android:clickable="false"
+        />
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -45,4 +96,6 @@
             android:orientation="vertical"
             android:scrollbars="vertical"></LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>
