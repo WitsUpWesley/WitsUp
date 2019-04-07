@@ -37,10 +37,8 @@
         android:id="@+id/btnEnrolInsCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="false"
         android:onClick="goToEnrolInCourse"
         android:text="Enrol In Course"
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
