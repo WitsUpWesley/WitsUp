@@ -19,5 +19,15 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class coursePage extends AppCompatActivity   {
+public class coursePage extends AppCompatActivity   {  String personNumber;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        personNumber = getIntent().getExtras().getString("PersonNumber");
+        setContentView(R.layout.course_page);
+
+        setTitle("coursePage");
+
+    }
 }

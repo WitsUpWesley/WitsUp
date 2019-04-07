@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:isScrollContainer="true"
+    android:orientation="vertical"
+    tools:context="com.example.witsup.CreateCourse">
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="Log Out" />
+    <Button
+        android:id="@+id/btnCreateCourse"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:clickable="false"
+        android:onClick="createCourse"
+        android:text="Create Course"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblCourseCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text="Course Code"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/ETCourseCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text=""
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/lblCoursePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text="Course Password"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/ETCoursePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text=""
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/lblCourseDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text="Course Description"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/ETCourseDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:text=""
+        android:visibility="invisible" />
+</LinearLayout>

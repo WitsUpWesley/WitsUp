@@ -21,8 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Courses">
+        </activity> <activity android:name=".CreateCourse">
+    </activity>
 
-        </activity>
+
+
     </application>
 
 </manifest>

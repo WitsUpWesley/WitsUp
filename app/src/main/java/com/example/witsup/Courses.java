@@ -44,6 +44,13 @@ public class Courses extends AppCompatActivity {
             btnTemp.setVisibility(View.VISIBLE);
             btnTemp.setClickable(true);
 
+            LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.btnCreateCourse).getLayoutParams();
+            paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
+            findViewById(R.id.scrollV).setLayoutParams(paramss);
+
+
+
+            /*
             findViewById(R.id.lblCourseCode).setVisibility(View.VISIBLE);
             findViewById(R.id.lblCoursePassword).setVisibility(View.VISIBLE);
             findViewById(R.id.lblCourseDescription).setVisibility(View.VISIBLE);
@@ -55,6 +62,29 @@ public class Courses extends AppCompatActivity {
             findViewById(R.id.ETCourseCode).setClickable(true);
             findViewById(R.id.ETCoursePassword).setClickable(true);
             findViewById(R.id.ETCourseDescription).setClickable(true);
+
+
+
+            LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.lblCourseCode).getLayoutParams();
+            paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
+
+            findViewById(R.id.btnCreateCourse).setLayoutParams(paramss);
+            findViewById(R.id.lblCourseCode).setLayoutParams(paramss);
+            findViewById(R.id.lblCoursePassword).setLayoutParams(paramss);
+            findViewById(R.id.lblCourseDescription).setLayoutParams(paramss);
+
+            findViewById(R.id.ETCourseCode).setLayoutParams(paramss);
+            findViewById(R.id.ETCoursePassword).setLayoutParams(paramss);
+            findViewById(R.id.ETCourseDescription).setLayoutParams(paramss);
+            paramss = (LinearLayout.LayoutParams) findViewById(R.id.scrollV).getLayoutParams();
+            paramss.height=LinearLayout.LayoutParams.MATCH_PARENT;
+            findViewById(R.id.scrollV).setLayoutParams(paramss);
+            */
+
+
+
+
+
 
         }
 
@@ -98,11 +128,11 @@ public class Courses extends AppCompatActivity {
                 TextView courseName = (TextView) item.findViewById(R.id.course_name);
                 courseName.setText(jo.getString("Course Code") + "    ");
 
-/*
+
                item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Courses.this,coursePage.class);
+                        Intent intent = new Intent(Courses.this, coursePage.class);
                         try {
                             String temp =jo.getString("course");
                             System.out.println("Sending course here "+temp);
@@ -115,24 +145,6 @@ public class Courses extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
-*/
-
-
-                //if lecturer is clicked then show lecturer contact details
-                //            TextView lecturer = (TextView) item.findViewById(R.id.course_lecturer);
-                //            lecturer.setText(jo.getString("lecturer")+"    ");
-                /*
-
-                place in course item
-                 <TextView
-        android:id="@+id/course_lecturer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="right"
-        android:text="R: " />
-                 */
-
 
                 l.addView(item);
 
@@ -175,84 +187,16 @@ public class Courses extends AppCompatActivity {
         Intent intent = new Intent(Courses.this, MainActivity.class);
         startActivity(intent);
     }
-public void addCourse(String temp){
-    ContentValues params = new ContentValues();
-    params.clear();
-    System.out.println("Temp heree____________________________"+temp);
-
-    if (temp.charAt(0) =='[' && temp.charAt(1)==']') {
-
-        params = new ContentValues();
-        params.clear();
-
-        params.put("Username", personNumber);
-        String t1,t2,t3;
-        t1=((TextView) findViewById(R.id.ETCourseCode)).getText().toString();
-        t2=  ((TextView) findViewById(R.id.ETCourseDescription)).getText().toString();
-        t3=((TextView) findViewById(R.id.ETCoursePassword)).getText().toString() ;
-        System.out.println("Terying to make new course here"+t1+" "+t2+" "+t3);
-        if (t1!=null&& t1!=""&& t1.contains(" ")==false && t2!=null&& t2!=""&& t3!=null&& t3!="") {
-            params.put("CourseCode", t1);
-            params.put("CourseDisc", t2);
-            params.put("CoursePass", t3);
-
-
-            AsyncHttpPost asyncHttpPost2 = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addCourse.php", params) {
-
-
-                @Override
-                protected void onPostExecute(String output) {
-                    System.out.println("from addcoursephp" + output);
-                    Toast.makeText(getApplicationContext(), "Course added", Toast.LENGTH_SHORT).show();
-                    ((TextView) findViewById(R.id.ETCourseCode)).setText("");
-                    ((TextView) findViewById(R.id.ETCourseDescription)).setText("");
-                    ((TextView) findViewById(R.id.ETCoursePassword)).setText("");
-                }
-            };
-            asyncHttpPost2.execute();
-        }else{
-            Toast.makeText(getApplicationContext(), "Cannot be blank and course code cannot contain spaces", Toast.LENGTH_SHORT).show();
-
-
-        }
-
-    } else {
-        Toast.makeText(getApplicationContext(), "Course code already exists, choose another course code", Toast.LENGTH_SHORT).show();
-        ((TextView) findViewById(R.id.ETCourseCode)).setText("");
-    }
-
-
-}
-    public void createCourse(View v) {
-        // Intent intent = new Intent(Courses.this, MainActivity.class);
-        //     startActivity(intent);
-
-
-        System.out.println("Create course");
-
-
-        ContentValues params = new ContentValues();
-        params.clear();
-
-        params.put("CourseCode", ((TextView) findViewById(R.id.ETCourseCode)).getText().toString());
-
-
-        AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/checkCourse.php", params) {
-
-            @Override
-            protected void onPostExecute(String output) {
 
 
 
-
-                System.out.println("from checkcoursephp" + output);
-                addCourse(output);
-
-            }
-        };
-        asyncHttpPost.execute();
-
+    public void goToCreateCourse(View v) {
+        Intent intent = new Intent(Courses.this, CreateCourse.class);
+        intent.putExtra("PersonNumber", personNumber);
+        startActivity(intent);
 
     }
+
+
 }
 
