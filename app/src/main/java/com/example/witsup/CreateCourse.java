@@ -52,7 +52,7 @@ public class CreateCourse extends AppCompatActivity {
             t2 = ((TextView) findViewById(R.id.ETCourseDescription)).getText().toString();
             t3 = ((TextView) findViewById(R.id.ETCoursePassword)).getText().toString();
             System.out.println("Terying to make new course here" + t1 + " " + t2 + " " + t3);
-            if (t1.isEmpty()|| t1.contains(" ") || t2.isEmpty()|| t2.contains(" ")||t3.isEmpty()|| t3.contains(" ")) {
+            if (t1.isEmpty()|| t1.contains(" ") || t2.isEmpty()||t3.isEmpty()|| t3.contains(" ")) {
                 Toast.makeText(getApplicationContext(), "Cannot be blank and course code cannot contain spaces", Toast.LENGTH_SHORT).show();
             }
             else {
