@@ -129,14 +129,12 @@ public class HomePage extends AppCompatActivity {
                             System.out.println("Sending course here "+temp);
                             intent.putExtra("course",temp);
                             intent.putExtra("username", personNumber);
-
                         } catch (JSONException e) {
                             System.out.println("Cannot put product id into inent for product infro page");
                         }
                         startActivity(intent);
                     }
                 });
-
                 l.addView(item);
 
             }
@@ -168,7 +166,6 @@ public class HomePage extends AppCompatActivity {
 
             outputArr.add(price);
         }
-
         return outputArr;
 
     }

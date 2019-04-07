@@ -26,7 +26,7 @@ public class CourseDetails extends AppCompatActivity   {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        personNumber = getIntent().getExtras().getString("PersonNumber");
+      //  personNumber = getIntent().getExtras().getString("PersonNumber");
         setContentView(R.layout.course_page);
 
         setTitle("CourseDetails");
