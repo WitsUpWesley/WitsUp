@@ -202,7 +202,6 @@ public void addCourse(String temp){
 
                 @Override
                 protected void onPostExecute(String output) {
-
                     System.out.println("from addcoursephp" + output);
                     Toast.makeText(getApplicationContext(), "Course added", Toast.LENGTH_SHORT).show();
                     ((TextView) findViewById(R.id.ETCourseCode)).setText("");
