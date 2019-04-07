@@ -39,7 +39,6 @@ public class Courses extends AppCompatActivity {
             //show create course button
             System.out.println("Shoudl show all stuff");
 
-
             Button btnTemp = findViewById(R.id.btnCreateCourse);
             btnTemp.setVisibility(View.VISIBLE);
             btnTemp.setClickable(true);
@@ -81,11 +80,6 @@ public class Courses extends AppCompatActivity {
             findViewById(R.id.scrollV).setLayoutParams(paramss);
             */
 
-
-
-
-
-
         }
 
         AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getAll.php", params) {
@@ -110,9 +104,6 @@ public class Courses extends AppCompatActivity {
                 TextView course_id = (TextView) item.findViewById(R.id.course_id);
                 course_id.setText(jo.getString("CourseID"));
                 final int id = jo.getInt("CourseID");
-
-
-
                 removed this from course item above lineale r layour
 
 
