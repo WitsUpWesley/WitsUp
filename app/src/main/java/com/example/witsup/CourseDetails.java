@@ -21,15 +21,32 @@ import java.util.ArrayList;
 
 public class CourseDetails extends AppCompatActivity   {
 
+    private Button resourcesButton;
+
     String personNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  personNumber = getIntent().getExtras().getString("PersonNumber");
+        //  personNumber = getIntent().getExtras().getString("PersonNumber");
         setContentView(R.layout.course_page);
 
         setTitle("CourseDetails");
+
+        resourcesButton = (Button) findViewById(R.id.btnResources);
+
+        resourcesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openResourcesPage();
+            }
+        });
+    }
+
+    public void openResourcesPage(){
+
+        Intent resourcesIntent = new Intent(this, Resources.class);
+        startActivity(resourcesIntent);
 
     }
 }

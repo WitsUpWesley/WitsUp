@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Resources"></activity>
         <activity android:name=".LogInPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,14 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".HomePage"/>
-        <activity android:name=".CreateCourse"/>
-        <activity android:name=".CourseDetails"/>
-
-        <activity android:name=".Enrolincourse">
-        </activity>
-
+        <activity android:name=".HomePage" />
+        <activity android:name=".CreateCourse" />
+        <activity android:name=".CourseDetails" />
+        <activity android:name=".Enrolincourse" />
     </application>
 
 </manifest>
