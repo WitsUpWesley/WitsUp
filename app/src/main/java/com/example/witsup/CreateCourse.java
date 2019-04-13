@@ -27,7 +27,7 @@ public class CreateCourse extends AppCompatActivity {
         System.out.println((personNumber.charAt(0)));
         if (personNumber.charAt(0) == 'a') {
             //show create course button
-            System.out.println("Shoudl show all stuff");
+            System.out.println("Should show all stuff");
 
 
             Button btnTemp = findViewById(R.id.btnCreateCourse);
@@ -39,7 +39,7 @@ public class CreateCourse extends AppCompatActivity {
     public void addCourse(String temp) {
         ContentValues params = new ContentValues();
         params.clear();
-        System.out.println("Temp heree____________________________" + temp);
+        System.out.println("Temp here____________________________" + temp);
 
         if (temp.charAt(0) == '[' && temp.charAt(1) == ']') {
 
