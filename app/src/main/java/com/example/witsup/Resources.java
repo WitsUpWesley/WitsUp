@@ -56,6 +56,28 @@ public class Resources extends AppCompatActivity {
 
         });
 
+        uploadFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(pdfUri != null) {
+                    uploadfile(pdfUri);
+                }
+
+                else {
+
+                    Toast.makeText(Resources.this, "Select a File" , Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+
+    }
+
+    private void uploadfile(Uri pdfUri){
+
+
+
     }
 
 
@@ -91,12 +113,13 @@ public class Resources extends AppCompatActivity {
         if(requestCode == 86 && resultCode == RESULT_OK && data != null){
 
             pdfUri = data.getData(); // Return URi of selected file
+            notification.setText("File selected : " + data.getData().getLastPathSegment());
 
         }
 
         else {
 
-            Toast.makeText(Resources.this, "Please select file...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Resources.this, "No file was selected...", Toast.LENGTH_SHORT).show();
 
         }
 
