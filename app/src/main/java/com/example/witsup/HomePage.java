@@ -24,6 +24,7 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         personNumber = getIntent().getExtras().getString("PersonNumber");
         setContentView(R.layout.homepage);
+        TextView profileIcon = findViewById(R.id.profileIcon); //declares the textview i added to hold the icon.
 
         setTitle("Home");
         ContentValues params = new ContentValues();

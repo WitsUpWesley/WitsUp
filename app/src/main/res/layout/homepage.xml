@@ -8,20 +8,52 @@
     android:layout_height="match_parent"
     android:isScrollContainer="true"
     android:orientation="vertical"
+    android:background="@drawable/home"
     tools:context="com.example.witsup.HomePage">
 
-    <Button
-        android:id="@+id/btnLogout"
+    <LinearLayout
+        android:id="@+id/contents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="logout"
-        android:text="Log Out" />
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        android:background="#12283c"
+        >
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/ic_settings_power_black_24dp"
+            android:onClick="logout"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="5dp"
+            android:text="Log Out"
+            android:background="#12283c"
+            />
+
+        <TextView
+            android:id="@+id/profileIcon"
+            android:layout_width="229dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@drawable/profilecon"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="#5775c7"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 
     <ScrollView
         android:id="@+id/scrollV"
         android:layout_width="match_parent"
-        android:layout_height="198dp"
+        android:layout_height="285dp"
         android:isScrollContainer="true"
         android:orientation="vertical"
         tools:context="com.example.witsup.HomePage">
