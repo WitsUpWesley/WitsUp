@@ -30,4 +30,4 @@ script:
 
 
 after_success:
-- ./gradlew test jacocoTestReport coveralls
+  - bash <(curl -s https://codecov.io/bash)
