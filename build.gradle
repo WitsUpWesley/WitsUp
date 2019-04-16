@@ -20,6 +20,9 @@ allprojects {
         
     }
 }
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
 
