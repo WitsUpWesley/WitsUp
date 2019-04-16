@@ -5,11 +5,15 @@ buildscript {
         google()
         jcenter()
         
+    }
+    dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
+        
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
+
 allprojects {
     repositories {
         google()
@@ -17,26 +21,7 @@ allprojects {
         
     }
 }
-apply plugin: 'com.android.application'
-android {
-  compileSdkVersion 28
-  buildToolsVersion "28.0.3"
-  
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-  
-  defaultConfig {
-        applicationId "com.example.witsup"
-        minSdkVersion 13
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-    }
-  
-  buildTypes {
-    debug {
-      testCoverageEnabled true
-    }
-  }
 }
