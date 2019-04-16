@@ -20,11 +20,20 @@ allprojects {
         
     }
 }
+apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
 
 android {
   compileSdkVersion 28
   buildToolsVersion "28.0.3"
+  defaultConfig {
+        applicationId "com.example.witsup"
+        minSdkVersion 13
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+  
   buildTypes {
     debug {
       testCoverageEnabled true
