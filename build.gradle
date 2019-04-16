@@ -16,6 +16,11 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
+buildTypes {
+    debug {
+      testCoverageEnabled true
+    }
+  }
 
 allprojects {
     repositories {
