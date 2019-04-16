@@ -16,10 +16,12 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
-buildTypes {
+android {
+  buildTypes {
     debug {
       testCoverageEnabled true
     }
+  }
 }
 jacocoTestReport {
   reports {
