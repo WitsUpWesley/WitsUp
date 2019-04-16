@@ -20,7 +20,12 @@ buildTypes {
     debug {
       testCoverageEnabled true
     }
+}
+jacocoTestReport {
+  reports {
+    xml.enabled true
   }
+}
 
 allprojects {
     repositories {
