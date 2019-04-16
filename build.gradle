@@ -23,6 +23,7 @@ android {
     }
   }
 }
+apply plugin: 'jacoco'
 jacocoTestReport {
   reports {
     xml.enabled true
