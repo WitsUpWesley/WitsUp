@@ -41,14 +41,6 @@ android {
   }
 }
 
-apply plugin: 'jacoco'
-
-jacocoTestReport {
-  reports {
-    xml.enabled true
-  }
-}
-
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
