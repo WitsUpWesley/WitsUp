@@ -40,9 +40,6 @@ public class LogInPage extends AppCompatActivity {
         params.put( "Username", username);
         params.put( "Password", password);
 
-
-     //   AsyncHttpPost asyncHttpPost = new AsyncHttpPost(" http%3A%2F%2Flamp.ms.wits.ac.za%2F%7Es1355485%2FloginTest.php", params) {
-
 AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/loginTest.php", params) {
    //   AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://s1355485@lamp.ms.wits.ac.za/loginTest.php", params) {
 
@@ -62,18 +59,6 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
 //
                     checker= output.substring(start,end);
 
-                    /*
-                    System.out.println("username:"+checker);
-
-
-                    if (!LABEL.getText().toString().equals(checker)) {
-                        System.out.println("wrong password");
-                        LABEL.setText("WRONG PASSS" + output);
-                    } else {
-                        System.out.println("logged in");
-                        LABEL.setText("R" + output);
-                    }
-                    */
                     System.out.println("Logged in"+output);
                     LABEL.setText("Logged in"+checker);
 

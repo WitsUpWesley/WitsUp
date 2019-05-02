@@ -1,6 +1,8 @@
 package com.example.witsup;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -61,7 +63,7 @@ public class Resources extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(pdfUri != null) {
-                    uploadfile(pdfUri);
+                    uploadfile(Resources.this, pdfUri);
                 }
 
                 else {
@@ -74,7 +76,27 @@ public class Resources extends AppCompatActivity {
 
     }
 
-    private void uploadfile(Uri pdfUri){
+    private static void uploadfile(final Context c, Uri pdfUri){
+
+
+        ContentValues cv = new ContentValues();
+        //This is where I got stuck I don't know which content values to pass
+
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/upload.php", cv) {
+            @Override
+            protected void onPostExecute(String output) {
+
+                if (output.equals("success")){
+                    Toast.makeText(c, "upload successful", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+
+                    Toast.makeText(c, "upload failed", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }.execute();
 
 
 
@@ -112,7 +134,7 @@ public class Resources extends AppCompatActivity {
 
         if(requestCode == 86 && resultCode == RESULT_OK && data != null){
 
-            pdfUri = data.getData(); // Return URi of selected file
+            pdfUri = data.getData(); // Return Uri of selected file
             notification.setText("File selected : " + data.getData().getLastPathSegment());
 
         }
