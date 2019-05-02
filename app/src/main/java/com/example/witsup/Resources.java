@@ -78,8 +78,8 @@ public class Resources extends AppCompatActivity {
 
     private static void uploadfile(final Context c, Uri pdfUri){
 
-
         ContentValues cv = new ContentValues();
+        cv.put("uploaded_file",pdfUri.toString());
         //This is where I got stuck I don't know which content values to pass
 
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/upload.php", cv) {
