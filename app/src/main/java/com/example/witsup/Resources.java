@@ -1,22 +1,32 @@
 package com.example.witsup;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Resources extends AppCompatActivity {
 
@@ -25,6 +35,14 @@ public class Resources extends AppCompatActivity {
     Button selectFile, uploadFile;
 
     TextView notification;
+
+    int serverResponseCode = 0;
+    ProgressDialog dialog = null;
+
+    String upLoadServerUri = null;
+
+    String uploadFilePath = null ;
+    String uploadFileName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +55,8 @@ public class Resources extends AppCompatActivity {
          uploadFile = (Button) findViewById(R.id.upload_file);
 
          notification = findViewById(R.id.notification);
+
+        upLoadServerUri = "http://lamp.ms.wits.ac.za/~s1355485/upload.php";
 
         selectFile.setOnClickListener(new View.OnClickListener() {
 
@@ -62,43 +82,35 @@ public class Resources extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(pdfUri != null) {
-                    uploadfile(Resources.this, pdfUri);
-                }
+                dialog = ProgressDialog.show(Resources.this, "", "Uploading file...", true);
 
-                else {
+                new Thread(new Runnable() {
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                //messageText.setText("uploading started.....");
+                            }
+                        });
 
-                    Toast.makeText(Resources.this, "Select a File" , Toast.LENGTH_SHORT).show();
+                        File file = new File(pdfUri.getPath());
+                        uploadFilePath = file.getAbsolutePath();
 
-                }
+                        uploadFile(uploadFilePath);
+
+                    }
+                }).start();
             }
         });
 
     }
 
-    private static void uploadfile(final Context c, Uri pdfUri){
 
-        ContentValues cv = new ContentValues();
-        cv.put("uploaded_file",pdfUri.getPath());
-        //This is where I got stuck I don't know which content values to pass
+    private void selectfile(){
 
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/upload.php", cv) {
-            @Override
-            protected void onPostExecute(String output) {
-
-                if (output.equals("success")){
-                    Toast.makeText(c, "upload successful", Toast.LENGTH_SHORT).show();
-                }
-
-                else{
-
-                    Toast.makeText(c, "upload failed", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }.execute();
-
-
+        Intent intent = new Intent();
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, 86);
 
     }
 
@@ -120,14 +132,6 @@ public class Resources extends AppCompatActivity {
 
     }
 
-    private void selectfile(){
-
-        Intent intent = new Intent();
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 86);
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -135,8 +139,9 @@ public class Resources extends AppCompatActivity {
         if(requestCode == 86 && resultCode == RESULT_OK && data != null){
 
             pdfUri = data.getData(); // Return Uri of selected file
-            notification.setText("File selected : " + data.getData().getLastPathSegment());
+            File file = new File(data.getData().getPath());
 
+                notification.setText("File selected : " + file.getName());
         }
 
         else {
@@ -146,4 +151,150 @@ public class Resources extends AppCompatActivity {
         }
 
     }
+
+
+    public int uploadFile(final String sourceFileUri) {
+
+        String fileName = sourceFileUri;
+
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+
+        final File sourceFile = new File(sourceFileUri);
+
+        if (!sourceFile.isFile()) {
+
+            dialog.dismiss();
+
+            Log.e("uploadFile", "Source File not exist :"
+                    +uploadFilePath + "" + uploadFileName);
+
+            runOnUiThread(new Runnable() {
+                public void run() {
+
+                    Toast.makeText(Resources.this, "File does not exist", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            return 0;
+
+        }
+        else
+        {
+            try {
+
+                // open a URL connection to the Servlet
+                FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                URL url = new URL(upLoadServerUri);
+
+                // Open a HTTP  connection to  the URL
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setDoInput(true); // Allow Inputs
+                conn.setDoOutput(true); // Allow Outputs
+                conn.setUseCaches(false); // Don't use a Cached Copy
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Connection", "Keep-Alive");
+                conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+                conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+                conn.setRequestProperty("uploaded_file", fileName);
+
+                dos = new DataOutputStream(conn.getOutputStream());
+
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
+                                + fileName + "\"" + lineEnd);
+
+                        dos.writeBytes(lineEnd);
+
+                // create a buffer of  maximum size
+                bytesAvailable = fileInputStream.available();
+
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                buffer = new byte[bufferSize];
+
+                // read file and write it into form...
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                while (bytesRead > 0) {
+
+                    dos.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                }
+
+                // send multipart form data necessary after file data...
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+                // Responses from the server (code and message)
+                serverResponseCode = conn.getResponseCode();
+                String serverResponseMessage = conn.getResponseMessage();
+
+                Log.i("uploadFile", "HTTP Response is : "
+                        + serverResponseMessage + ": " + serverResponseCode);
+
+                if(serverResponseCode == 200){
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            /*String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
+                                    +" http://www.androidexample.com/media/uploads/"
+                                    +uploadFileName;
+
+                            messageText.setText(msg);
+                            Toast.makeText(UploadToServer.this, "File Upload Complete.",
+                                    Toast.LENGTH_SHORT).show();*/
+                        }
+                    });
+                }
+
+                //close the streams //
+                fileInputStream.close();
+                dos.flush();
+                dos.close();
+
+            } catch (MalformedURLException ex) {
+
+                dialog.dismiss();
+                ex.printStackTrace();
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                       // messageText.setText("MalformedURLException Exception : check script url.");
+                        Toast.makeText(Resources.this, "MalformedURLException",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+            } catch (Exception e) {
+
+                dialog.dismiss();
+                e.printStackTrace();
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                       // messageText.setText("Got Exception : see logcat ");
+                        Toast.makeText(Resources.this, "Got Exception : see logcat ",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+                Log.e("UploadfiletoserverExcep", "Exception : "
+                        + e.getMessage(), e);
+            }
+            dialog.dismiss();
+            return serverResponseCode;
+
+        } // End else block
+    }
+
 }
