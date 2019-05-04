@@ -72,7 +72,7 @@ public class Enrolincourse extends AppCompatActivity {
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                      //so if cklicked call method to set selected course name
+                      //so if clicked call method to set selected course name
                         try {
                             String temp ="" ;
                             System.out.println("1\n\n\n");

@@ -18,10 +18,12 @@ import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
     String personNumber;
+    String course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         personNumber = getIntent().getExtras().getString("PersonNumber");
         setContentView(R.layout.homepage);
         TextView profileIcon = findViewById(R.id.profileIcon); //declares the textview i added to hold the icon.
@@ -121,18 +123,23 @@ public class HomePage extends AppCompatActivity {
                 courseName.setText(jo.getString("Course Code") + "    ");
 
 
+
                item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(HomePage.this, CourseDetails.class);
                         try {
-                            String temp =jo.getString("course");
-                            System.out.println("Sending course here "+temp);
+                            String temp =jo.getString("Course Code");
                             intent.putExtra("course",temp);
                             intent.putExtra("username", personNumber);
+                            System.out.println("Sending course here "+temp);
+                            //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                         } catch (JSONException e) {
                             System.out.println("Cannot put product id into inent for product infro page");
                         }
+                        //course = jo.optString("course");
+
+
                         startActivity(intent);
                     }
                 });
@@ -187,6 +194,5 @@ public class HomePage extends AppCompatActivity {
         intent.putExtra("PersonNumber", personNumber);
         startActivity(intent);
     }
-
 }
 

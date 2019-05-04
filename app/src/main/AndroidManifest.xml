@@ -3,7 +3,7 @@
     package="com.example.witsup">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Resources"></activity>
+        <activity android:name=".AnnouncementPage"></activity>
+        <activity android:name=".Resources" />
         <activity android:name=".LogInPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

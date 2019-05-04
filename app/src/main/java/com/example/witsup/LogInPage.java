@@ -79,7 +79,9 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
 
 
                     Intent intent = new Intent(LogInPage.this, HomePage.class);
+
                    intent.putExtra("PersonNumber", checker);
+
 
                    startActivity(intent);
                 }

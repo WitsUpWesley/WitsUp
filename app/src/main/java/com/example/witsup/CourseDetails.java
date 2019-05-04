@@ -22,25 +22,46 @@ import java.util.ArrayList;
 public class CourseDetails extends AppCompatActivity   {
 
     private Button resourcesButton;
+    private Button announcementButton;
 
-    String personNumber;
+     String personNumber;
+     String course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //  personNumber = getIntent().getExtras().getString("PersonNumber");
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+        {
+            personNumber = extras.getString("username");
+            course = extras.getString("course");
+            System.out.println(personNumber + course);
+        }
+        //personNumber = getIntent().getExtras().getString("PersonNumber");
+        //course = getIntent().getExtras().getString("course");
         setContentView(R.layout.course_page);
 
-        setTitle("CourseDetails");
+        setTitle(course +  " Course Details");
+
 
         resourcesButton = (Button) findViewById(R.id.btnResources);
-
         resourcesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openResourcesPage();
             }
         });
+
+        announcementButton = (Button) findViewById(R.id.btnAnnouncements);
+        announcementButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAnnouncementsPage();
+            }
+        });
+
+
+
     }
 
     public void openResourcesPage(){
@@ -48,5 +69,12 @@ public class CourseDetails extends AppCompatActivity   {
         Intent resourcesIntent = new Intent(this, Resources.class);
         startActivity(resourcesIntent);
 
+    }
+
+    public void openAnnouncementsPage(){
+        Intent announcementIntent = new Intent(this, AnnouncementPage.class);
+        announcementIntent.putExtra("course",course);
+        announcementIntent.putExtra("username", personNumber);
+        startActivity(announcementIntent);
     }
 }
