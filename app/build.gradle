@@ -1,15 +1,11 @@
 apply plugin: 'com.android.application'
 
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
-    }
+  dependencies {
+    classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
+  }
 }
 
-apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
 
 android {
@@ -26,8 +22,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debug {
+                testCoverageEnabled true
+            }
         }
     }
+}
+apply plugin: 'jacoco'
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+  }
 }
 
 dependencies {
