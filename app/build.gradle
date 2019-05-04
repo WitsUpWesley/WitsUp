@@ -1,4 +1,7 @@
 buildscript {
+  repositories {
+        jcenter()
+  }
   dependencies {
     classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
   }
@@ -27,6 +30,13 @@ android {
             }
         }
     }
+}
+apply plugin: 'jacoco'
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+  }
 }
 
 dependencies {
