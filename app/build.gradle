@@ -31,13 +31,6 @@ android {
     }
     
 }
-apply plugin: 'jacoco'
-
-jacocoTestReport {
-  reports {
-    xml.enabled true
-  }
-}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
