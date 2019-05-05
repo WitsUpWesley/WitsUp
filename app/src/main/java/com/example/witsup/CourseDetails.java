@@ -63,6 +63,10 @@ public class CourseDetails extends AppCompatActivity   {
 
 
     }
+    public void logout(View v) {
+        Intent intent = new Intent(CourseDetails.this, LogInPage.class);
+        startActivity(intent);
+    }
 
     public void openResourcesPage(){
 

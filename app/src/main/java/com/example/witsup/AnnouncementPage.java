@@ -119,6 +119,10 @@ public class AnnouncementPage extends AppCompatActivity {
         t.setText("");
 
             }
+    public void logout(View v) {
+        Intent intent = new Intent(AnnouncementPage.this, LogInPage.class);
+        startActivity(intent);
+    }
 
 
 }

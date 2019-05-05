@@ -34,7 +34,10 @@ public class Enrolincourse extends AppCompatActivity {
         params.clear();
         params.put("Username", personNumber);
         System.out.println((personNumber));
-        if (personNumber.charAt(0) == 'a') {
+        Button btnTemp1 = findViewById(R.id.btnEnrolInsCourse);
+        btnTemp1.setVisibility(View.INVISIBLE);
+        btnTemp1.setClickable(false);
+        /*if (personNumber.charAt(0) == 'a') {
             //show create course button
             System.out.println("Shoudl show all stuff");
             Button btnTemp = findViewById(R.id.btnCreateCourse);
@@ -42,7 +45,7 @@ public class Enrolincourse extends AppCompatActivity {
             btnTemp.setClickable(true);
 
 
-        }
+        }*/
 
         AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/notEnrolled.php", params) {
             @Override
