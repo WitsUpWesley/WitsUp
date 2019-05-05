@@ -25,5 +25,6 @@ public class LogInPageTest {
     public void shouldRenderView() throws Exception{
         rule.launchActivity(new Intent());
         onView(withId(R.id.lblUsername)).check(matches(withText("Username")));
+        onView(withId(R.id.lblPassword)).check(matches(withText("Password")));
     }
 }
