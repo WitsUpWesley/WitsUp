@@ -23,6 +23,7 @@ public class CourseDetails extends AppCompatActivity   {
 
     private Button resourcesButton;
     private Button announcementButton;
+    private TextView lblCourse;
 
      String personNumber;
      String course;
@@ -44,6 +45,8 @@ public class CourseDetails extends AppCompatActivity   {
         setTitle(course +  " Course Details");
 
 
+        lblCourse=(TextView) findViewById(R.id.labelCourse);
+        lblCourse.setText("Course: "+course);
         resourcesButton = (Button) findViewById(R.id.btnResources);
         resourcesButton.setOnClickListener(new View.OnClickListener() {
             @Override
