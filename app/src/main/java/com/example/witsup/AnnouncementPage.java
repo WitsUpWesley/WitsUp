@@ -1,5 +1,6 @@
 package com.example.witsup;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class AnnouncementPage extends AppCompatActivity {
     String personNumber;
     String course;
 
+    @SuppressLint("StaticFieldLeak")
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,31 +40,44 @@ public class AnnouncementPage extends AppCompatActivity {
         setTitle("Announcements");
         //personNumber = getIntent().getExtras().getString("PersonNumber");
 
-
-
-
-
-
-
         ContentValues params = new ContentValues();
         params.clear();
         params.put("Course",course);
-        //params.put("Course", course);
-        //System.out.println((personNumber));
-        if (personNumber.charAt(0) == 'a') {
-            //show add announcement button
 
-            TextView txtTemp = findViewById(R.id.txtAddAnn);
-            txtTemp.setVisibility(View.VISIBLE);
-            txtTemp.setClickable(true);
+        AsyncHttpPost asyncHttpPost1;
+        asyncHttpPost1 = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/checkLecturer.php", params) {
+            @Override
+            protected void onPostExecute(String output) {
 
-            Button btnTemp = findViewById(R.id.btnCreateAnn);
-            btnTemp.setVisibility(View.VISIBLE);
-            btnTemp.setClickable(true);
+                try{
+                    JSONArray ja = new JSONArray(output);
+                    final JSONObject jo = (JSONObject) ja.get(0);
+                    if (personNumber.equals(jo.getString("Lecturer")))
+                    {
+                        //show add announcement button
 
-            TextView txtTemp2 = findViewById(R.id.lblAnnouncement);
-            txtTemp2.setVisibility(View.VISIBLE);
-        }
+                        TextView txtTemp = findViewById(R.id.txtAddAnn);
+                        txtTemp.setVisibility(View.VISIBLE);
+                        txtTemp.setClickable(true);
+
+                        Button btnTemp = findViewById(R.id.btnCreateAnn);
+                        btnTemp.setVisibility(View.VISIBLE);
+                        btnTemp.setClickable(true);
+
+                        TextView txtTemp2 = findViewById(R.id.lblAnnouncement);
+                        txtTemp2.setVisibility(View.VISIBLE);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        asyncHttpPost1.execute();
+
+
+        params.clear();
+        params.put("Course",course);
+
 
 
         AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/displayAnnouncements.php", params) {
@@ -74,6 +89,9 @@ public class AnnouncementPage extends AppCompatActivity {
         asyncHttpPost.execute();
 
     }
+
+
+
 
     public void processData(String output) {
         LinearLayout l = (LinearLayout) findViewById(R.id.containers);
