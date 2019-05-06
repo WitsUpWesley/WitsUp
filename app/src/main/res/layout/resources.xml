@@ -5,57 +5,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:background="@drawable/home"
     tools:context=".Resourcesforfb">
+
+    <LinearLayout
+        android:id="@+id/linlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home"
+        android:isScrollContainer="true"
+        android:orientation="vertical"
+        tools:context="com.example.witsup.HomePage">
+
+        <LinearLayout
+            android:id="@+id/contents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#12283c"
+            android:orientation="horizontal"
+            android:scrollbars="horizontal">
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#12283c"
+                android:drawableTop="@drawable/ic_settings_power_black_24dp"
+                android:onClick="logout"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="5dp"
+                android:text="Log Out" />
+
+            <TextView
+                android:id="@+id/profileIcon"
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableRight="@drawable/profilecon"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="#5775c7"
+                android:textSize="40dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnViewUploads"
         android:layout_width="237dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="92dp"
         android:onClick="goToViewUploads"
         android:text="View uploads"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSelectFile"
         android:layout_width="237dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="139dp"
+        android:layout_marginTop="176dp"
+        android:clickable="false"
         android:text="Select File"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:visibility="invisible"
-        android:clickable="false"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblNotification"
         android:layout_width="246dp"
         android:layout_height="36dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="264dp"
+        android:clickable="false"
         android:text="No file has been selected"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FFFFFF"
         android:visibility="invisible"
-        android:clickable="false"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnUploadFile"
-        android:layout_width="248dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="324dp"
+        android:layout_width="244dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="340dp"
+        android:clickable="false"
         android:text="Upload File"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:visibility="invisible"
-        android:clickable="false"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -14,15 +14,16 @@
     <LinearLayout
         android:id="@+id/contents"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#12283c"
+        android:layout_height="54dp"
+        android:background="#12283C"
         android:orientation="horizontal"
         android:scrollbars="horizontal">
 
         <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnLogout2"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="#12283c"
             android:drawableTop="@drawable/ic_settings_power_black_24dp"
             android:onClick="logout"
@@ -91,10 +92,10 @@
         android:layout_height="35dp"
         android:background="#07000000"
         android:text="Please enter in your announcement below"
-        android:visibility="invisible"
-        android:textColor="@color/colorAccent"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="normal|bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/lblAnnouncement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.324"

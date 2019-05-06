@@ -308,4 +308,8 @@ maybe error here1 filepathtostring:content://com.android.providers.downloads.doc
 
 
     }
+    public void logout(View v) {
+        Intent intent = new Intent(Resourcesforfb.this, LogInPage.class);
+        startActivity(intent);
+    }
 }
