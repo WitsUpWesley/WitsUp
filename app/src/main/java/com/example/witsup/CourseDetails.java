@@ -25,24 +25,18 @@ public class CourseDetails extends AppCompatActivity   {
     private Button announcementButton;
     private TextView lblCourse;
 
-     String personNumber;
-     String course;
+    private String personNumber, course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
-        if(extras != null)
-        {
-            personNumber = extras.getString("username");
-            course = extras.getString("course");
-            System.out.println(personNumber + course);
-        }
-        //personNumber = getIntent().getExtras().getString("PersonNumber");
-        //course = getIntent().getExtras().getString("course");
+          personNumber = getIntent().getExtras().getString("username");
+          course = getIntent().getExtras().getString("course");
         setContentView(R.layout.course_page);
 
-        setTitle(course +  " Course Details");
+        setTitle("Course Details");
+        TextView tmp =(TextView) findViewById(R.id.labelCourse);
+        tmp.setText(course);
 
 
         lblCourse=(TextView) findViewById(R.id.labelCourse);
@@ -72,9 +66,10 @@ public class CourseDetails extends AppCompatActivity   {
     }
 
     public void openResourcesPage(){
-
-        Intent resourcesIntent = new Intent(this, Resources.class);
-        startActivity(resourcesIntent);
+        Intent intent = new Intent(this, Resourcesforfb.class);
+        intent.putExtra("course", course);
+        intent.putExtra("username", personNumber);
+        startActivity(intent);
 
     }
 

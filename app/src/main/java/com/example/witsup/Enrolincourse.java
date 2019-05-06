@@ -164,12 +164,12 @@ public class Enrolincourse extends AppCompatActivity {
                 protected void onPostExecute(String output) {
                    // processData(output);
                     System.out.println("asycn happned result from addStudentCourse: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"+output);
-                    Toast.makeText(getApplicationContext(), "Course added succesfully", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Course added succesfully", Toast.LENGTH_SHORT).show();
                   //  Intent intent = new Intent(Enrolincourse.this, Enrolincourse.class);
                   //  startActivity(intent);
 
 
-                    
+
                 }
             };
             asyncHttpPost.execute();

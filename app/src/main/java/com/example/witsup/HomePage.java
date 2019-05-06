@@ -32,7 +32,8 @@ public class HomePage extends AppCompatActivity {
         ContentValues params = new ContentValues();
         params.clear();
         params.put("Username", personNumber);
-        System.out.println((personNumber));
+
+
         if (personNumber.charAt(0) == 'a') {
             //show create course button
             System.out.println("Shoudl show all stuff");
@@ -123,23 +124,14 @@ public class HomePage extends AppCompatActivity {
                 courseName.setText(jo.getString("Course Code") + "    ");
 
 
-
-               item.setOnClickListener(new View.OnClickListener() {
+               item.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(HomePage.this, CourseDetails.class);
-                        try {
-                            String temp =jo.getString("Course Code");
-                            intent.putExtra("course",temp);
+
+                           String courseName = ((TextView) v.findViewById(R.id.course_name)).getText().toString();
+                            intent.putExtra("course" , courseName);
                             intent.putExtra("username", personNumber);
-                            System.out.println("Sending course here "+temp);
-                            //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                        } catch (JSONException e) {
-                            System.out.println("Cannot put product id into inent for product infro page");
-                        }
-                        //course = jo.optString("course");
-
-
                         startActivity(intent);
                     }
                 });

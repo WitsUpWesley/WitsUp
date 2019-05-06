@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LogInPage extends AppCompatActivity {
 
@@ -51,6 +52,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
                 if(output.equals("[]")){
                     System.out.println("User doesn't exist");
                     LABEL.setText("Invalid Credentials"+output);
+                    Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
 
                 }else {//logged in
 //
@@ -59,8 +61,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
 //
                     checker= output.substring(start,end);
 
-                    System.out.println("Logged in"+output);
-                    LABEL.setText("Logged in"+checker);
+                    Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_SHORT).show();
 
 
                     Intent intent = new Intent(LogInPage.this, HomePage.class);
@@ -99,7 +100,6 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
         textView=(TextView) findViewById(R.id.btnCreateNewuser1);
         textView.setVisibility(View.VISIBLE);
         textView.setEnabled(true);
-
 
 
     }
@@ -156,6 +156,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
                 outputToLabel("Passwords do not match");
 
                 System.out.println("Passwords don't match");
+
             }
 
         }
@@ -167,6 +168,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
         TextView textView = (TextView) findViewById(R.id.lblOutput);
         textView.setVisibility(View.VISIBLE);
         textView.setText(output);
+        Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
     }
 
 

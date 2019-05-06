@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".AnnouncementPage"></activity>
-        <activity android:name=".Resources" />
+
         <activity android:name=".LogInPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +26,9 @@
         <activity android:name=".CreateCourse" />
         <activity android:name=".CourseDetails" />
         <activity android:name=".Enrolincourse" />
+        <activity android:name=".Resourcesforfb"/>
+        <activity android:name=".ViewUploadedFiles"/>
+        <activity android:name=".testListActivity"/>
     </application>
 
 </manifest>
