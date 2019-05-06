@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1026015287195",
+    "firebase_url": "https://witsup-5ae79.firebaseio.com",
+    "project_id": "witsup-5ae79",
+    "storage_bucket": "witsup-5ae79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026015287195:android:c7018fde6afff3cf",
+        "android_client_info": {
+          "package_name": "com.example.witsup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026015287195-bl270unt5bjjq3norrq19j2evtljscrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.witsup",
+            "certificate_hash": "be2c9232447f5cc4b717c6ca4cc11574e120d0bf"
+          }
+        },
+        {
+          "client_id": "1026015287195-ahsdli5ouuhfqh40cl8fltpmarvnt323.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2mrAQ_ADQ6mlvJn2Mt4afqDJjrmdauZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026015287195-ahsdli5ouuhfqh40cl8fltpmarvnt323.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
