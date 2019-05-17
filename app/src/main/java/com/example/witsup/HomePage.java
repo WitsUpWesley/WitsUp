@@ -101,25 +101,6 @@ public class HomePage extends AppCompatActivity {
                 final JSONObject jo = (JSONObject) ja.get(i);
                 LinearLayout item = (LinearLayout) getLayoutInflater().inflate(R.layout.item_course, null);
 
-            /*
-                TextView course_id = (TextView) item.findViewById(R.id.course_id);
-                course_id.setText(jo.getString("CourseID"));
-                final int id = jo.getInt("CourseID");
-
-
-
-                removed this from course item above lineale r layour
-
-
-
-                <TextView
-    android:id="@+id/course_id"
-    android:layout_width="10dp"
-    android:layout_height="match_parent"
-    android:background="#AAAAAA"
-    android:text="1"
-    android:visibility="invisible" />
-                */
                 TextView courseName = (TextView) item.findViewById(R.id.course_name);
                 courseName.setText(jo.getString("Course Code") + "    ");
 

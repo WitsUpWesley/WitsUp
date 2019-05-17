@@ -1,5 +1,6 @@
 package com.example.witsup;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class CourseDetails extends AppCompatActivity   {
 
     private Button resourcesButton;
     private Button announcementButton;
+    private Button QandAButton;
     private TextView lblCourse;
 
     private String personNumber, course;
@@ -57,6 +59,16 @@ public class CourseDetails extends AppCompatActivity   {
             }
         });
 
+        QandAButton = (Button) findViewById(R.id.btnQandA);
+
+        QandAButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openViewQuestionsPage();
+            }
+        });
+
 
 
     }
@@ -78,5 +90,15 @@ public class CourseDetails extends AppCompatActivity   {
         announcementIntent.putExtra("course",course);
         announcementIntent.putExtra("username", personNumber);
         startActivity(announcementIntent);
+    }
+
+
+    private void openViewQuestionsPage(){
+
+        Intent viewQuestionsIntent = new Intent(this, ViewQuestions.class);
+        viewQuestionsIntent.putExtra("course",course);
+        viewQuestionsIntent.putExtra("username", personNumber);
+        startActivity(viewQuestionsIntent);
+
     }
 }
