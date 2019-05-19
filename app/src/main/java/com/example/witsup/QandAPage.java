@@ -2,6 +2,7 @@ package com.example.witsup;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.icu.util.Output;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 public class QandAPage extends AppCompatActivity {
 
     String course;
+    static Boolean OUTPUT = Boolean.FALSE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class QandAPage extends AppCompatActivity {
                 answerC = findViewById(R.id.answerCInput),
                 answerD = findViewById(R.id.answerDInput),
                 correctAnswer = findViewById(R.id.correctAnswerInput);
+
 
         final Button post = findViewById(R.id.btnPost);
 
@@ -54,6 +57,15 @@ public class QandAPage extends AppCompatActivity {
 
                 postQandA(QandAPage.this, cv);
 
+                if(OUTPUT=Boolean.TRUE){
+                    question.getText().clear();
+                    answerA.getText().clear();
+                    answerB.getText().clear();
+                    answerC.getText().clear();
+                    answerD.getText().clear();
+                    correctAnswer.getText().clear();
+                }
+
             }
         });
 
@@ -66,13 +78,17 @@ public class QandAPage extends AppCompatActivity {
                 if(output.equals("1")){
 
                     Toast.makeText(c, "Successfully Posted", Toast.LENGTH_SHORT).show();
+                    OUTPUT = Boolean.TRUE;
                 }
                 else{
 
                     Toast.makeText(c, "Post Failed", Toast.LENGTH_SHORT).show();
+                    OUTPUT = Boolean.FALSE;
                 }
+
             }
         }.execute();
+
     }
 
 

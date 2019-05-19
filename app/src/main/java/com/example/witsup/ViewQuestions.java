@@ -53,6 +53,8 @@ public class ViewQuestions extends AppCompatActivity {
                     }
                     else{
                         btnaddQuestion.setVisibility(View.INVISIBLE);
+                        btnaddQuestion.setClickable(false);
+
 
                     }
 
