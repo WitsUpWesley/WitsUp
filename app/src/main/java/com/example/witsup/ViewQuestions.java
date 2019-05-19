@@ -29,23 +29,44 @@ public class ViewQuestions extends AppCompatActivity {
         setContentView(R.layout.view_questions);
 
         personNumber = extras.getString("username");
-        Button btnaddQuestion = findViewById(R.id.addQuestion);
+        course = extras.getString("course");
 
-        if (personNumber.charAt(0) == 'a') {
+        final Button btnaddQuestion = findViewById(R.id.addQuestion);
+        setTitle("Questions");
 
-            btnaddQuestion.setVisibility(View.VISIBLE);
-            btnaddQuestion.setClickable(true);
-        }
+        ContentValues param = new ContentValues();
+        param.put("Course",course);
 
-        else {
+        AsyncHttpPost async;
+        async= new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/checkLecturer.php", param) {
+            @Override
+            protected void onPostExecute(String output) {
 
-            btnaddQuestion.setVisibility(View.GONE);
+                try{
+                    JSONArray out = new JSONArray(output);
+                    final JSONObject result = (JSONObject) out.get(0);
+                    if (personNumber.equals(result.getString("Lecturer"))) {
 
-        }
+                        btnaddQuestion.setVisibility(View.VISIBLE);
+                        btnaddQuestion.setClickable(true);
+
+                    }
+                    else{
+                        btnaddQuestion.setVisibility(View.INVISIBLE);
+
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        async.execute();
+
+
         LinearLayout holder = findViewById(R.id.questionHolder);
 
 
-        course = extras.getString("course");
 
         ContentValues cv = new ContentValues();
         cv.put("course", course);

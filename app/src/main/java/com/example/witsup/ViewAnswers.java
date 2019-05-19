@@ -38,6 +38,7 @@ public class ViewAnswers extends AppCompatActivity implements View.OnClickListen
 
         course = extras.getString("course");
         q = extras.getString("q");
+        setTitle("Answers");
 
         TextView qshown = findViewById(R.id.questionShown);
         qshown.setText(q);
