@@ -31,6 +31,7 @@ public class ViewAnswers extends AppCompatActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Answers");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_answers);
 

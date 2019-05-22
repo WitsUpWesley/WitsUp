@@ -23,6 +23,8 @@ public class ViewQuestions extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setTitle("Questions");
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
 
