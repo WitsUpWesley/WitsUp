@@ -34,6 +34,8 @@ public class QandAPage extends AppCompatActivity {
 
         final Button post = findViewById(R.id.btnPost);
 
+        final Button clear = findViewById(R.id.btnClear);
+
         course = getIntent().getExtras().getString("course");
 
         post.setOnClickListener(new View.OnClickListener() {
@@ -57,17 +59,22 @@ public class QandAPage extends AppCompatActivity {
 
                 postQandA(QandAPage.this, cv);
 
-                if(OUTPUT=Boolean.TRUE){
-                    question.getText().clear();
-                    answerA.getText().clear();
-                    answerB.getText().clear();
-                    answerC.getText().clear();
-                    answerD.getText().clear();
-                    correctAnswer.getText().clear();
-                }
-
             }
         });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                question.getText().clear();
+                answerA.getText().clear();
+                answerB.getText().clear();
+                answerC.getText().clear();
+                answerD.getText().clear();
+                correctAnswer.getText().clear();
+            }
+        });
+
+
 
     }
 

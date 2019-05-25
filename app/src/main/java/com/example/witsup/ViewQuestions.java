@@ -15,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.view.View.VISIBLE;
+
 public class ViewQuestions extends AppCompatActivity {
 
     String course = null;
@@ -34,43 +36,39 @@ public class ViewQuestions extends AppCompatActivity {
         course = extras.getString("course");
 
         final Button btnaddQuestion = findViewById(R.id.addQuestion);
-        setTitle("Questions");
 
-        ContentValues param = new ContentValues();
-        param.put("Course",course);
+        ContentValues c = new ContentValues();
+        c.put("Course",course);
 
-        AsyncHttpPost async;
-        async= new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/checkLecturer.php", param) {
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/checkLecturer.php", c) {
             @Override
             protected void onPostExecute(String output) {
+                try {
+                    JSONArray lecturer = new JSONArray(output){};
 
-                try{
-                    JSONArray out = new JSONArray(output);
-                    final JSONObject result = (JSONObject) out.get(0);
-                    if (personNumber.equals(result.getString("Lecturer"))) {
+                    JSONObject lec = lecturer.getJSONObject(0);
+
+                    System.out.println(lec);
+
+                    if (personNumber.equals(lec.getString("Lecturer"))){
 
                         btnaddQuestion.setVisibility(View.VISIBLE);
                         btnaddQuestion.setClickable(true);
-
-                    }
-                    else{
-                        btnaddQuestion.setVisibility(View.INVISIBLE);
-                        btnaddQuestion.setClickable(false);
-
-
                     }
 
-                } catch (Exception e) {
+                    else {
+
+                        btnaddQuestion.setVisibility(View.GONE);
+                    }
+
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
-        };
-        async.execute();
 
+            }
+        }.execute();
 
         LinearLayout holder = findViewById(R.id.questionHolder);
-
-
 
         ContentValues cv = new ContentValues();
         cv.put("course", course);
