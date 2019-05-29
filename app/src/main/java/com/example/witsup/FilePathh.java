@@ -5,10 +5,6 @@ public class FilePathh {
     String filePathhID, filePathhName;
    String filePathhURL;
 
-    public FilePathh(){
-
-    }
-
     public FilePathh(String filePathhID, String filePathhName, String filePathhURL) {
         this.filePathhID = filePathhID;
         this.filePathhName = filePathhName;
