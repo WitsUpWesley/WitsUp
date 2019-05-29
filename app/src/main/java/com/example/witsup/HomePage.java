@@ -125,31 +125,7 @@ public class HomePage extends AppCompatActivity {
     }
 
 
-    public ArrayList<String> makeIntoArray(String s) {
-        ArrayList<String> outputArr = new ArrayList<String>();
 
-        int posSrchStart = 0, posSrchEnd = 0;
-        String name = "", price = "";
-
-        while (s.lastIndexOf('}') != posSrchEnd) {
-            //gets name
-            posSrchStart = s.indexOf(':', posSrchStart) + 1;
-            posSrchEnd = s.indexOf(',', posSrchStart);
-
-            name = s.substring(posSrchStart + 1, posSrchEnd - 1);
-
-            outputArr.add(name);
-            //gets price
-
-            posSrchStart = s.indexOf(':', posSrchStart) + 1;
-            posSrchEnd = s.indexOf('}', posSrchStart - 1);
-            price = s.substring(posSrchStart + 1, posSrchEnd - 1);
-
-            outputArr.add(price);
-        }
-        return outputArr;
-
-    }
 
 
     public void logout(View v) {

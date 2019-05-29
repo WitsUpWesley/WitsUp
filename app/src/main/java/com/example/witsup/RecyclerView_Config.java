@@ -18,6 +18,8 @@ public class RecyclerView_Config {
     private Context mContext;
     private FilePathhAdapter mFilePathhAdapter;
     public void setConfig(RecyclerView recyclerView, Context context, List<FilePathh> filePathh, List<String> keys){
+
+
         mContext=context;
         mFilePathhAdapter= new FilePathhAdapter(filePathh, keys);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));

@@ -76,6 +76,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
         asyncHttpPost.execute();
 
     }
+
     public void createAccount(View v){
         EditText t;
         String username, password;
