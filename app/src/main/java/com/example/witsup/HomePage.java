@@ -23,8 +23,10 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        personNumber = getIntent().getExtras().getString("PersonNumber");
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            personNumber = getIntent().getExtras().getString("PersonNumber");
+        }
         setContentView(R.layout.homepage);
         TextView profileIcon = findViewById(R.id.profileIcon); //declares the text view i added to hold the icon.
 
@@ -33,54 +35,54 @@ public class HomePage extends AppCompatActivity {
         params.clear();
         params.put("Username", personNumber);
 
-
-        if (personNumber.charAt(0) == 'a') {
-            //show create course button
-            System.out.println("Should show all stuff");
-
-
-            Button btnTemp = findViewById(R.id.btnCreateCourse);
-            btnTemp.setVisibility(View.VISIBLE);
-            btnTemp.setClickable(true);
-
-         //   LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.btnCreateCourse).getLayoutParams();
-        //    paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
-        //    findViewById(R.id.scrollV).setLayoutParams(paramss);
+        if(extras != null) {
+            if (personNumber.charAt(0) == 'a') {
+                //show create course button
+                System.out.println("Should show all stuff");
 
 
+                Button btnTemp = findViewById(R.id.btnCreateCourse);
+                btnTemp.setVisibility(View.VISIBLE);
+                btnTemp.setClickable(true);
 
-            /*
-            findViewById(R.id.lblCourseCode).setVisibility(View.VISIBLE);
-            findViewById(R.id.lblCoursePassword).setVisibility(View.VISIBLE);
-            findViewById(R.id.lblCourseDescription).setVisibility(View.VISIBLE);
-
-            findViewById(R.id.ETCourseCode).setVisibility(View.VISIBLE);
-            findViewById(R.id.ETCoursePassword).setVisibility(View.VISIBLE);
-            findViewById(R.id.ETCourseDescription).setVisibility(View.VISIBLE);
-
-            findViewById(R.id.ETCourseCode).setClickable(true);
-            findViewById(R.id.ETCoursePassword).setClickable(true);
-            findViewById(R.id.ETCourseDescription).setClickable(true);
+                //   LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.btnCreateCourse).getLayoutParams();
+                //    paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
+                //    findViewById(R.id.scrollV).setLayoutParams(paramss);
 
 
 
-            LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.lblCourseCode).getLayoutParams();
-            paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
+                /*
+                findViewById(R.id.lblCourseCode).setVisibility(View.VISIBLE);
+                findViewById(R.id.lblCoursePassword).setVisibility(View.VISIBLE);
+                findViewById(R.id.lblCourseDescription).setVisibility(View.VISIBLE);
 
-            findViewById(R.id.btnCreateCourse).setLayoutParams(paramss);
-            findViewById(R.id.lblCourseCode).setLayoutParams(paramss);
-            findViewById(R.id.lblCoursePassword).setLayoutParams(paramss);
-            findViewById(R.id.lblCourseDescription).setLayoutParams(paramss);
+                findViewById(R.id.ETCourseCode).setVisibility(View.VISIBLE);
+                findViewById(R.id.ETCoursePassword).setVisibility(View.VISIBLE);
+                findViewById(R.id.ETCourseDescription).setVisibility(View.VISIBLE);
 
-            findViewById(R.id.ETCourseCode).setLayoutParams(paramss);
-            findViewById(R.id.ETCoursePassword).setLayoutParams(paramss);
-            findViewById(R.id.ETCourseDescription).setLayoutParams(paramss);
-            paramss = (LinearLayout.LayoutParams) findViewById(R.id.scrollV).getLayoutParams();
-            paramss.height=LinearLayout.LayoutParams.MATCH_PARENT;
-            findViewById(R.id.scrollV).setLayoutParams(paramss);
-            */
+                findViewById(R.id.ETCourseCode).setClickable(true);
+                findViewById(R.id.ETCoursePassword).setClickable(true);
+                findViewById(R.id.ETCourseDescription).setClickable(true);
+
+
+
+                LinearLayout.LayoutParams paramss = (LinearLayout.LayoutParams) findViewById(R.id.lblCourseCode).getLayoutParams();
+                paramss.height=LinearLayout.LayoutParams.WRAP_CONTENT;
+
+                findViewById(R.id.btnCreateCourse).setLayoutParams(paramss);
+                findViewById(R.id.lblCourseCode).setLayoutParams(paramss);
+                findViewById(R.id.lblCoursePassword).setLayoutParams(paramss);
+                findViewById(R.id.lblCourseDescription).setLayoutParams(paramss);
+
+                findViewById(R.id.ETCourseCode).setLayoutParams(paramss);
+                findViewById(R.id.ETCoursePassword).setLayoutParams(paramss);
+                findViewById(R.id.ETCourseDescription).setLayoutParams(paramss);
+                paramss = (LinearLayout.LayoutParams) findViewById(R.id.scrollV).getLayoutParams();
+                paramss.height=LinearLayout.LayoutParams.MATCH_PARENT;
+                findViewById(R.id.scrollV).setLayoutParams(paramss);
+                */
+            }
         }
-
         AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getAll.php", params) {
             @Override
             protected void onPostExecute(String output) {
