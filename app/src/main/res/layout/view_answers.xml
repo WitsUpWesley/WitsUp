@@ -5,6 +5,7 @@
     android:id="@+id/showQuestion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home"
     tools:context=".ViewQuestions">
 
     <TextView
@@ -21,7 +22,6 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,8 @@
             android:clickable="true"
             android:enabled="true"
             android:text="AnswerA"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/B"
@@ -59,7 +60,8 @@
             android:layout_weight="1"
             android:clickable="true"
             android:text="AnswerB"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/C"
@@ -68,7 +70,8 @@
             android:layout_weight="1"
             android:clickable="true"
             android:text="AnswerC"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white" />
 
         <RadioButton
             android:id="@+id/D"
@@ -78,7 +81,8 @@
             android:layout_weight="1"
             android:clickable="true"
             android:text="AnswerD"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white" />
     </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

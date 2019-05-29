@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.graphics.Color.WHITE;
+
 public class ViewAnswers extends AppCompatActivity implements View.OnClickListener{
 
     String q = null;
@@ -43,6 +45,7 @@ public class ViewAnswers extends AppCompatActivity implements View.OnClickListen
 
         TextView qshown = findViewById(R.id.questionShown);
         qshown.setText(q);
+        qshown.setTextColor(WHITE);
 
         rg = findViewById(R.id.radio_group);
         rb1  = findViewById(R.id.A);
@@ -76,9 +79,13 @@ public class ViewAnswers extends AppCompatActivity implements View.OnClickListen
                         JSONObject answer = answers.getJSONObject(i);
 
                         rb1.setText("A: " + answer.getString(myArray[0]));
+                        rb1.setTextColor(WHITE);
                         rb2.setText("B: " + answer.getString(myArray[1]));
+                        rb2.setTextColor(WHITE);
                         rb3.setText("C: " + answer.getString(myArray[2]));
+                        rb3.setTextColor(WHITE);
                         rb4.setText("D: " + answer.getString(myArray[3]));
+                        rb4.setTextColor(WHITE);
 
                     }
 

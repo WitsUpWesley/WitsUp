@@ -26,7 +26,7 @@ public class HomePage extends AppCompatActivity {
 
         personNumber = getIntent().getExtras().getString("PersonNumber");
         setContentView(R.layout.homepage);
-        TextView profileIcon = findViewById(R.id.profileIcon); //declares the textview i added to hold the icon.
+        TextView profileIcon = findViewById(R.id.profileIcon); //declares the text view i added to hold the icon.
 
         setTitle("Home");
         ContentValues params = new ContentValues();
@@ -36,7 +36,7 @@ public class HomePage extends AppCompatActivity {
 
         if (personNumber.charAt(0) == 'a') {
             //show create course button
-            System.out.println("Shoudl show all stuff");
+            System.out.println("Should show all stuff");
 
 
             Button btnTemp = findViewById(R.id.btnCreateCourse);
