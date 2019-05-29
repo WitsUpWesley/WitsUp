@@ -18,6 +18,24 @@ public class RecyclerView_Config {
     private Context mContext;
     private FilePathhAdapter mFilePathhAdapter;
     public void setConfig(RecyclerView recyclerView, Context context, List<FilePathh> filePathh, List<String> keys){
+        System.out.println("*************************************recyler view");      System.out.println("*************************************recyler view");      System.out.println("*************************************recyler view");      System.out.println("*************************************recyler view");
+
+
+        System.out.println(recyclerView);
+        System.out.println(context);
+        System.out.println(filePathh);
+        System.out.println(keys);
+
+        System.out.println("ENDIEDDDD___________________________________________________");
+
+        System.out.println("ENDIEDDDD___________________________________________________");
+
+        System.out.println("ENDIEDDDD___________________________________________________");
+
+        System.out.println("ENDIEDDDD___________________________________________________");
+
+
+
         mContext=context;
         mFilePathhAdapter= new FilePathhAdapter(filePathh, keys);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
