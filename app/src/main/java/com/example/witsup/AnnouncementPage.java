@@ -26,16 +26,16 @@ public class AnnouncementPage extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //System.out.println(personNumber);
+
 
         Bundle extras = getIntent().getExtras();
         if(extras != null)
         {
             personNumber = extras.getString("username");
             course = extras.getString("course");
-            //System.out.println(personNumber + course);
+
         }
-        System.out.println("Person Number: " + personNumber + "\nCourse: " + course);
+
         setContentView(R.layout.announcement_page);
         setTitle("Announcements");
         //personNumber = getIntent().getExtras().getString("PersonNumber");

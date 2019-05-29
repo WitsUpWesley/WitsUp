@@ -47,15 +47,6 @@ public class ViewUploadedFiles extends AppCompatActivity {
         myDb = FirebaseDatabase.getInstance().getReference();
 
 
-        System.out.println("check here ###########################################1######################");
-        System.out.println("check here ##########################################2#######################");
-        System.out.println("check here ##########################################3#######################");
-        System.out.println("check here ##########################################4#######################");
-        System.out.println("check here ##########################################5#######################");
-        System.out.println("sr " + myDb);
-        System.out.println("srs" + myDb.toString());
-
-
         myDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
