@@ -50,25 +50,24 @@ public class ViewUploadedFiles extends AppCompatActivity {
         myDb.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                System.out.println("Child added!!!!!!!!!!!!!!!!!!!!!!!!!******************" + s);
-                System.out.println("Child added!!!!!!!!!!!!!!!!!!!!!!!!!******************" + dataSnapshot.getChildren());
+
 
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                System.out.println("Child changed!!!!!!!!!!!!!!!!!!!!!!!!!******************" + s);
+
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                System.out.println("Child removed!!!!!!!!!!!!!!!!!!!!!!!!!******************" + dataSnapshot);
+
 
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                System.out.println("Child added!!!!!!!!!!!!!!!!!!!!!!!!!******************" + s);
+              
 
             }
 
