@@ -61,6 +61,7 @@ public class CreateCourse extends AppCompatActivity {
                 params.put("CoursePass", t3);
 
 
+
                 AsyncHttpPost asyncHttpPost2 = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addCourse.php", params) {
 
 
@@ -115,15 +116,6 @@ public class CreateCourse extends AppCompatActivity {
         Intent intent = new Intent(CreateCourse.this, LogInPage.class);
         startActivity(intent);
     }
-    //unit test test
-    public Integer countCourses(int num)
-    {
-        int sum=0;
-        for(int i=1;i<=num;i++)
-        {
-            sum=sum+i;
-        }
-        return sum;
-    }
+
 
 }

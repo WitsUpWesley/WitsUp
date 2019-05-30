@@ -1,5 +1,6 @@
 package com.example.witsup;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -47,8 +48,7 @@ public class QandAPage extends AppCompatActivity {
                 D = findViewById(R.id.checkBoxD);
         Intent intent=getIntent();
         course= intent.getStringExtra("course");
-
-       // course = getIntent().getExtras().getString("course");
+        //course = getIntent().getExtras().getString("course");
 
         post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,7 +148,8 @@ public class QandAPage extends AppCompatActivity {
 
     }
 
-    private static void postQandA(final Context c, ContentValues cv){
+    @SuppressLint("StaticFieldLeak")
+    public void postQandA(final Context c, ContentValues cv){
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/qanda.php", cv) {
             @Override
             protected void onPostExecute(String output) {

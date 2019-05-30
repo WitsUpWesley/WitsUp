@@ -6,6 +6,7 @@ import android.support.test.espresso.action.ScrollToAction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,16 +24,16 @@ import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(AndroidJUnit4.class)
 
-public class QandATest {
+public class QandAPageTest {
 
     @Rule
     public ActivityTestRule rule=new ActivityTestRule(QandAPage.class,true,false);
 
     @Test
     public void btns() throws Exception {
-       rule.launchActivity(new Intent());
-       onView(withId(R.id.btnPost)).check(matches(withText("POST")));
-       onView(withId(R.id.btnClear)).check(matches(withText("CLEAR")));
+        rule.launchActivity(new Intent());
+        onView(withId(R.id.btnPost)).check(matches(withText("POST")));
+        onView(withId(R.id.btnClear)).check(matches(withText("CLEAR")));
     }
 
     @Test
@@ -54,7 +55,6 @@ public class QandATest {
         rule.launchActivity(new Intent());
         onView(withId(R.id.answerBInput)).perform(typeText("name"));
         onView(withId(R.id.checkBoxB)).perform(click());
-        onView(withId(R.id.btnPost)).perform(click());
     }
 
     @Test
@@ -65,17 +65,7 @@ public class QandATest {
 
     }
 
-    @Test
-    public void answerD() {
-        rule.launchActivity(new Intent());
-        onView(withId(R.id.answerDInput)).perform(typeText("name"));
-        onView(withId(R.id.checkBoxD)).perform(click());
-    }
-    @Test
-    public void correctAnswer() {
-        rule.launchActivity(new Intent());
-        onView(withId(R.id.correctAnswerInput)).perform(typeText("B"));
-    }
+
 
     @Test
     public void can_The_clear_Questions_and_answers(){
@@ -93,6 +83,10 @@ public class QandATest {
         onView(withId(R.id.answerCInput)).check(matches(withText("")));
     }
 
+    @Ignore("Tested in app that populates all")
+    public void postQandA() {
+
+    }
 
 
 

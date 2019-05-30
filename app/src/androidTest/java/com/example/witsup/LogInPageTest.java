@@ -35,28 +35,6 @@ public class LogInPageTest {
 
     }
 
-    @Ignore("Not a feature yet")
-    @Test
-    public void createAccount() {
-
-    }
-
-    @Test
-    public void checkIfUserExists() {
-/*
-        rule.launchActivity(new Intent());
 
 
-        onView(withId(R.id.txtConfirmPassword)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-        onView(withId(R.id.btnLogin)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
-        */
-    }
-
-    @Test
-    public void outputToLabel() {
-    }
-
-    @Test
-    public void createNewUser() {
-    }
 }
