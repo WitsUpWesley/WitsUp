@@ -40,7 +40,7 @@ public class LogInPageTest {
     public void createAccount() {
 
     }
-
+    @Ignore("Not a feature yet, part of create account")
     @Test
     public void checkIfUserExists() {
 /*
@@ -56,6 +56,7 @@ public class LogInPageTest {
     public void outputToLabel() {
     }
 
+    @Ignore("Not a feature yet, part of create account")
     @Test
     public void createNewUser() {
     }

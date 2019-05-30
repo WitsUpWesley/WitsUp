@@ -76,7 +76,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
         asyncHttpPost.execute();
 
     }
-
+/*
     public void createAccount(View v){
         EditText t;
         String username, password;
@@ -104,8 +104,9 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
 
 
     }
+    /*
     public void checkIfUserExists(View v){
-        System.out.println("Running check if user exists");
+
         EditText t;
         String username, password1,password2;
         TextView textView ;
@@ -163,7 +164,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
         }
 
 
-    }
+    }*/
 
     public void outputToLabel(String output){
         TextView textView = (TextView) findViewById(R.id.lblOutput);
@@ -173,7 +174,7 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
     }
 
 
-
+/*
     public void createNewUser(){
         TextView t , textView;
         t=(EditText)findViewById(R.id.txtUsername);
@@ -209,4 +210,5 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
         textView.setVisibility(View.VISIBLE);
         textView.setEnabled(true);
     }
+    */
 }
