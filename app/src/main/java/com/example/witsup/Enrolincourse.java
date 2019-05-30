@@ -134,9 +134,9 @@ public class Enrolincourse extends AppCompatActivity {
     }
     public void selectCourse(String s){
          selectedCourse=s;
-        System.out.println("a\n\n\n");
+
         Toast.makeText(getApplicationContext(), "Selected course: "+selectedCourse, Toast.LENGTH_SHORT).show();
-        System.out.println("________________________________________________________________course seklected is: "+s);
+
     }
     public void logout(View v) {
         Intent intent = new Intent(Enrolincourse.this, LogInPage.class);

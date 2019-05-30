@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.test.rule.ActivityTestRule;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
@@ -21,11 +22,12 @@ public class CreateCourseTest {
     @Test
     public void onCreate() {
     }
-    
+    @Ignore("Will add courses to db")
     @Test
     public void addCourse() {
     }
 
+    @Ignore("Will add courses to db")
     @Test
     public void createCourse() {
 
@@ -55,7 +57,5 @@ public class CreateCourseTest {
 
     }
 
-    @Test
-    public void countCourses() {
-    }
+
 }

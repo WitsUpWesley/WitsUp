@@ -115,15 +115,6 @@ public class CreateCourse extends AppCompatActivity {
         Intent intent = new Intent(CreateCourse.this, LogInPage.class);
         startActivity(intent);
     }
-    //unit test test
-    public Integer countCourses(int num)
-    {
-        int sum=0;
-        for(int i=1;i<=num;i++)
-        {
-            sum=sum+i;
-        }
-        return sum;
-    }
+
 
 }
