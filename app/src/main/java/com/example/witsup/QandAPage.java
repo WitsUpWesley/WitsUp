@@ -2,7 +2,6 @@ package com.example.witsup;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.icu.util.Output;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,10 +44,8 @@ public class QandAPage extends AppCompatActivity {
                 B = findViewById(R.id.checkBoxB),
                 C = findViewById(R.id.checkBoxC),
                 D = findViewById(R.id.checkBoxD);
-        Intent intent=getIntent();
-        course= intent.getStringExtra("course");
 
-       // course = getIntent().getExtras().getString("course");
+        course = getIntent().getExtras().getString("course");
 
         post.setOnClickListener(new View.OnClickListener() {
             @Override
