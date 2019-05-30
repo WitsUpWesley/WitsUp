@@ -1,9 +1,6 @@
 package com.example.witsup;
 
 
-import android.app.Instrumentation;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -19,9 +16,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
@@ -30,17 +25,16 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.junit.Assert.assertNotNull;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ViewQuestionsTest {
+public class viewTest {
 
     @Rule
     public ActivityTestRule<LogInPage> mActivityTestRule = new ActivityTestRule<>(LogInPage.class);
 
     @Test
-    public void viewQuestionTest() {
+    public void viewTest() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -58,30 +52,9 @@ public class ViewQuestionsTest {
                                         0),
                                 0),
                         isDisplayed()));
-        appCompatEditText.perform(click());
+        appCompatEditText.perform(replaceText("a1"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.txtUsername),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                0),
-                        isDisplayed()));
-        appCompatEditText2.perform(replaceText("a1"), closeSoftKeyboard());
-
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(7000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-
-        ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.txtPassword),
                         childAtPosition(
                                 childAtPosition(
@@ -89,8 +62,7 @@ public class ViewQuestionsTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("1"), closeSoftKeyboard());
-
+        appCompatEditText2.perform(replaceText("1"), closeSoftKeyboard());
 
 
         ViewInteraction appCompatButton = onView(
@@ -158,6 +130,59 @@ public class ViewQuestionsTest {
                         0),
                         isDisplayed()));
         constraintLayout.perform(click());
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatRadioButton = onView(
+                allOf(withId(R.id.A), withText("A: A Shader is a program that runs on the graphics card."),
+                        childAtPosition(
+                                allOf(withId(R.id.radio_group),
+                                        childAtPosition(
+                                                withId(R.id.showQuestion),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        appCompatRadioButton.perform(click());
+
+        ViewInteraction appCompatRadioButton2 = onView(
+                allOf(withId(R.id.B), withText("B: A Shader is an array."),
+                        childAtPosition(
+                                allOf(withId(R.id.radio_group),
+                                        childAtPosition(
+                                                withId(R.id.showQuestion),
+                                                1)),
+                                1),
+                        isDisplayed()));
+        appCompatRadioButton2.perform(click());
+
+        ViewInteraction appCompatRadioButton3 = onView(
+                allOf(withId(R.id.C), withText("C: Both A and B."),
+                        childAtPosition(
+                                allOf(withId(R.id.radio_group),
+                                        childAtPosition(
+                                                withId(R.id.showQuestion),
+                                                1)),
+                                2),
+                        isDisplayed()));
+        appCompatRadioButton3.perform(click());
+
+        ViewInteraction appCompatRadioButton4 = onView(
+                allOf(withId(R.id.D), withText("D: None of the above."),
+                        childAtPosition(
+                                allOf(withId(R.id.radio_group),
+                                        childAtPosition(
+                                                withId(R.id.showQuestion),
+                                                1)),
+                                3),
+                        isDisplayed()));
+        //  appCompatRadioButton4.perform(click());
     }
 
     private static Matcher<View> childAtPosition(
@@ -177,24 +202,5 @@ public class ViewQuestionsTest {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
-    }
-
-
-    @Rule
-
-    public ActivityTestRule rule=new ActivityTestRule(ViewQuestions.class,true,false);
-    @Test
-    public void addQuestionBtn() {
-        ActivityTestRule rule = new ActivityTestRule(ViewQuestions.class, true, false);
-        Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(LogInPage.class.getName(), null, false);
-        Bundle b = new Bundle();
-        b.putString("username", "a1");
-        b.putString("course", "test");
-        rule.launchActivity(new Intent().putExtras(b));
-
-        assertNotNull(rule.getActivity().findViewById(R.id.addQuestion));
-
-        onView(withId(R.id.addQuestion)).perform(click());
-
     }
 }
