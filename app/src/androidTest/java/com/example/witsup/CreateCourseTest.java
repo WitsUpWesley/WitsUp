@@ -31,9 +31,7 @@ public class CreateCourseTest {
     @Test
     public void createCourse() {
 
-
     }
-
     @Test
     public void logout() {
         ActivityTestRule rule = new ActivityTestRule(CreateCourse.class, true, false);
