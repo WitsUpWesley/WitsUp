@@ -58,6 +58,7 @@ public class Resourcesforfb extends AppCompatActivity implements View.OnClickLis
         personNumber = getIntent().getExtras().getString("username");
         System.out.println("person number!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>!!!"+personNumber);
         course = getIntent().getExtras().getString("course");
+
         setContentView(R.layout.resources);
         FirebaseApp.initializeApp(this);
         storageReference = FirebaseStorage.getInstance().getReference();
