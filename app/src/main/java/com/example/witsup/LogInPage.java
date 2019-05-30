@@ -165,13 +165,13 @@ AsyncHttpPost asyncHttpPost = new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s135
 
 
     }*/
-
+/*
     public void outputToLabel(String output){
         TextView textView = (TextView) findViewById(R.id.lblOutput);
         textView.setVisibility(View.VISIBLE);
         textView.setText(output);
         Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
 
 /*
