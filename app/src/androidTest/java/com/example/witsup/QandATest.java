@@ -54,7 +54,6 @@ public class QandATest {
         rule.launchActivity(new Intent());
         onView(withId(R.id.answerBInput)).perform(typeText("name"));
         onView(withId(R.id.checkBoxB)).perform(click());
-        onView(withId(R.id.btnPost)).perform(click());
     }
 
     @Test
@@ -63,18 +62,6 @@ public class QandATest {
         onView(withId(R.id.answerCInput)).perform(typeText("name"));
         onView(withId(R.id.checkBoxC)).perform(click());
 
-    }
-
-    @Test
-    public void answerD() {
-        rule.launchActivity(new Intent());
-        onView(withId(R.id.answerDInput)).perform(typeText("name"));
-        onView(withId(R.id.checkBoxD)).perform(click());
-    }
-    @Test
-    public void correctAnswer() {
-        rule.launchActivity(new Intent());
-        onView(withId(R.id.correctAnswerInput)).perform(typeText("B"));
     }
 
     @Test
