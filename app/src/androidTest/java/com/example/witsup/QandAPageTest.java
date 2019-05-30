@@ -6,6 +6,7 @@ import android.support.test.espresso.action.ScrollToAction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -65,6 +66,7 @@ public class QandAPageTest {
     }
 
 
+
     @Test
     public void can_The_clear_Questions_and_answers(){
         rule.launchActivity(new Intent());
@@ -81,6 +83,11 @@ public class QandAPageTest {
         onView(withId(R.id.answerCInput)).check(matches(withText("")));
     }
 
+    @Ignore("Tested in app that populates all")
+    @Test
+    public void postQandA() {
+
+    }
 
 
 
