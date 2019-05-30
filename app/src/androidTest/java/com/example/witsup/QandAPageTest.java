@@ -54,7 +54,6 @@ public class QandAPageTest {
         rule.launchActivity(new Intent());
         onView(withId(R.id.answerBInput)).perform(typeText("name"));
         onView(withId(R.id.checkBoxB)).perform(click());
-        onView(withId(R.id.btnPost)).perform(click());
     }
 
     @Test
@@ -65,17 +64,6 @@ public class QandAPageTest {
 
     }
 
-    @Test
-    public void answerD() {
-        rule.launchActivity(new Intent());
-        onView(withId(R.id.answerDInput)).perform(typeText("name"));
-        onView(withId(R.id.checkBoxD)).perform(click());
-    }
-    @Test
-    public void correctAnswer() {
-        rule.launchActivity(new Intent());
-        onView(withId(R.id.correctAnswerInput)).perform(typeText("B"));
-    }
 
     @Test
     public void can_The_clear_Questions_and_answers(){
