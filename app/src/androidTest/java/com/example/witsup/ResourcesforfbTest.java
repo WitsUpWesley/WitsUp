@@ -28,6 +28,9 @@ public class ResourcesforfbTest {
 
     Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(testListActivity.class.getName(), null, false);
 
+
+
+
     @Test
     public void onCreate() {
         assertNotNull(rule.getActivity().findViewById(R.layout.resources));
@@ -66,7 +69,29 @@ public class ResourcesforfbTest {
     public void updateDatabase() {
     }
 
+
+
+
     @Test
     public void logout() {
+        ActivityTestRule rule = new ActivityTestRule(Resourcesforfb.class, true, false);
+        Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(LogInPage.class.getName(), null, false);
+        Bundle b = new Bundle();
+        b.putString("username", "a1");
+        b.putString("course", "test");
+        rule.launchActivity(new Intent().putExtras(b));
+
+        assertNotNull(rule.getActivity().findViewById(R.id.btnLogout));
+
+        onView(withId(R.id.btnLogout)).perform(click());
+
+        Activity secondAct = getInstrumentation().waitForMonitorWithTimeout(monitor2, 5000);
+
+        assertNotNull(secondAct);
+
+        onView(withId(R.id.btnLogin)).check(matches(withText("Login")));
+        secondAct.finish();
+
+
     }
 }
