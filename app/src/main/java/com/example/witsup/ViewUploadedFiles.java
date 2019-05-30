@@ -67,7 +67,7 @@ public class ViewUploadedFiles extends AppCompatActivity {
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-              
+
 
             }
 
